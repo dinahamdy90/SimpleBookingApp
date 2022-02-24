@@ -1,0 +1,39 @@
+<!-- Modal -->
+<div class="modal fade" id="exampleModal"  tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Booking {{modalTitle}}</h5>
+        <button type="button" class="btn-close" #closebutton (click)="closeClick()" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <app-booking [resource]="resource" (closeModel)="onClose($event)" *ngIf="activateAddBooking">
+        </app-booking>
+      </div>
+    </div>
+  </div>
+</div>
+
+<table class="table table-striped">
+    <thead>
+      <tr>
+          <th>Id</th>
+          <th>Name</th>
+          <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let dataItem of resourceList">
+        <td>{{dataItem.id}}</td>
+        <td>{{dataItem.name}}</td>
+        <td>
+          <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal"
+          (click)="OpenBooking(dataItem)">Book here</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  
+  <div class="alert alert-success" [ngStyle]="{'display':successdisplay}" role="alert">
+    {{successMessage}}
+  </div>
