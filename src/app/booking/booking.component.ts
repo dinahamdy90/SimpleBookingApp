@@ -55,10 +55,6 @@ export class BookingComponent implements OnInit {
               }
               return throwError(this.errorMessage);
             }
-          case 409: {
-            this.errorMessage = `Error: A Booking already exists within the same selected dates`;
-            return throwError(this.errorMessage);
-          }
           default: {
 
             this.errorMessage = `Error: ${error.status} ${error.message}`;
